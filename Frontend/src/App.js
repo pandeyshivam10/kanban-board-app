@@ -4,6 +4,13 @@ import AddTaskForm from "./components/AddTaskForm";
 import axios from "axios";
 import "./App.css";
 
+
+const api = axios.create({
+// baseURL: "",
+  baseURL: "http://localhost:3001",
+});
+
+
 const App = () => {
   const [tasks, setTasks] = useState([]);
 
@@ -11,9 +18,11 @@ const App = () => {
     fetchTasks();
   }, []);
 
+
+
   const fetchTasks = async () => {
     try {
-      const response = await axios.get("http://localhost:3001/tasks");
+      const response = await api.get("/tasks");
       setTasks(response.data);
     } catch (error) {
       console.error("Error fetching tasks:", error);
@@ -22,7 +31,7 @@ const App = () => {
 
   const handleAddTask = async (newTask) => {
     try {
-      const response = await axios.post("http://localhost:3001/tasks", newTask);
+      const response = await api.post("/tasks", newTask);
       setTasks([...tasks, response.data]);
     } catch (error) {
       console.error("Error adding task:", error);
@@ -31,8 +40,8 @@ const App = () => {
 
   const handleEditTask = async (editedTask) => {
     try {
-      const response = await axios.put(
-        `http://localhost:3001/tasks/${editedTask._id}`,
+      const response = await api.put(
+        `/tasks/${editedTask._id}`,
         editedTask
       );
       const updatedTasks = tasks.map((task) =>
@@ -46,7 +55,7 @@ const App = () => {
 
   const handleDeleteTask = async (taskId) => {
     try {
-      await axios.delete(`http://localhost:3001/tasks/${taskId}`);
+      await api.delete(`/tasks/${taskId}`);
       const updatedTasks = tasks.filter((task) => task._id !== taskId);
       setTasks(updatedTasks);
     } catch (error) {
