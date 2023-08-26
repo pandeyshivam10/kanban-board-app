@@ -54,13 +54,7 @@
   margin-bottom: 16px;
 }
 /* TaskCard component styles */
-.task-card {
-  background-color: #fff;
-  border-radius: 4px;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-  padding: 16px;
-  margin-bottom: 16px;
-}
+
 
 .task-edit,
 .task-view {
@@ -134,10 +128,6 @@
   flex-direction: column;
 }
 
-/* Optional: If you want to separate the tasks with some space */
-.task-card {
-  margin-bottom: 12px;
-}
 
 
 .app-title {
