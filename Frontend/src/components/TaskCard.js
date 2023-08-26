@@ -1,6 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
-const TaskCard = ({ task, onEdit, onDelete, onMoveToDoing, onMoveToDone }) => {
+const TaskCard = ({
+  task,
+  onEdit,
+  onDelete,
+  onMoveToDoing,
+  onMoveToDone,
+  onDragStart,
+  onDragEnd,
+}) => {
   const [isEditing, setIsEditing] = useState(false);
   const [editedTask, setEditedTask] = useState(task);
 
@@ -18,16 +26,21 @@ const TaskCard = ({ task, onEdit, onDelete, onMoveToDoing, onMoveToDone }) => {
     setEditedTask(task);
   };
 
-  const handleInputChange = event => {
+  const handleInputChange = (event) => {
     const { name, value } = event.target;
-    setEditedTask(prevTask => ({
+    setEditedTask((prevTask) => ({
       ...prevTask,
       [name]: value,
     }));
   };
 
   return (
-    <div className="task-card">
+    <div
+      className="task-card"
+      draggable
+      onDragStart={(e) => onDragStart(e, task)}
+      onDragEnd={onDragEnd}
+    >
       {isEditing ? (
         <div className="task-edit">
           <input
@@ -44,10 +57,16 @@ const TaskCard = ({ task, onEdit, onDelete, onMoveToDoing, onMoveToDone }) => {
             onChange={handleInputChange}
             className="task-input"
           />
-          <button onClick={handleSaveClick} className="task-button task-button-save">
+          <button
+            onClick={handleSaveClick}
+            className="task-button task-button-save"
+          >
             Save
           </button>
-          <button onClick={handleCancelClick} className="task-button task-button-cancel">
+          <button
+            onClick={handleCancelClick}
+            className="task-button task-button-cancel"
+          >
             Cancel
           </button>
         </div>
@@ -56,20 +75,17 @@ const TaskCard = ({ task, onEdit, onDelete, onMoveToDoing, onMoveToDone }) => {
           <h3 className="task-title">{task.title}</h3>
           <p className="task-description">{task.description}</p>
           <div className="task-buttons">
-            <button onClick={handleEditClick} className="task-button task-button-edit">
+            <button
+              onClick={handleEditClick}
+              className="task-button task-button-edit"
+            >
               Edit
             </button>
-            {task.status === 'To Do' && (
-              <button onClick={onMoveToDoing} className="task-button task-button-move">
-                Move to Doing
-              </button>
-            )}
-            {task.status === 'Doing' && (
-              <button onClick={onMoveToDone} className="task-button task-button-move">
-                Move to Done
-              </button>
-            )}
-            <button onClick={onDelete} className="task-button task-button-delete">
+
+            <button
+              onClick={onDelete}
+              className="task-button task-button-delete"
+            >
               Delete
             </button>
           </div>
