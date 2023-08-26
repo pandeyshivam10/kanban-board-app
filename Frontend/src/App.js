@@ -4,12 +4,9 @@ import AddTaskForm from "./components/AddTaskForm";
 import axios from "axios";
 import "./App.css";
 
-
 const api = axios.create({
-// baseURL: "",
-  baseURL: "http://localhost:3001",
+  baseURL: "http://localhost:3001", // Adjust the baseURL to your API endpoint
 });
-
 
 const App = () => {
   const [tasks, setTasks] = useState([]);
@@ -17,8 +14,6 @@ const App = () => {
   useEffect(() => {
     fetchTasks();
   }, []);
-
-
 
   const fetchTasks = async () => {
     try {
@@ -40,10 +35,7 @@ const App = () => {
 
   const handleEditTask = async (editedTask) => {
     try {
-      const response = await api.put(
-        `/tasks/${editedTask._id}`,
-        editedTask
-      );
+      const response = await api.put(`/tasks/${editedTask._id}`, editedTask);
       const updatedTasks = tasks.map((task) =>
         task._id === response.data._id ? response.data : task
       );
