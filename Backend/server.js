@@ -8,8 +8,11 @@ const app = express();
 app.use(bodyParser.json());
 
 app.use(cors());
+require("dotenv").config();
 
-mongoose.connect("mongodb://localhost:27017/kanban_board", {
+const mongo_cred = process.env.MONGO_CRED;
+
+mongoose.connect(mongo_cred, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
