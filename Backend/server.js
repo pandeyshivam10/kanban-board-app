@@ -1,4 +1,3 @@
-// server.js
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
@@ -56,7 +55,6 @@ app.post("/tasks", async (req, res) => {
   }
 });
 
-// Update a task
 app.put("/tasks/:id", async (req, res) => {
   try {
     const task = await Task.findByIdAndUpdate(req.params.id, req.body, {
@@ -68,7 +66,6 @@ app.put("/tasks/:id", async (req, res) => {
   }
 });
 
-// Delete a task
 app.delete("/tasks/:id", async (req, res) => {
   try {
     await Task.findByIdAndDelete(req.params.id);

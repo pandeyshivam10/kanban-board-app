@@ -1,14 +1,6 @@
 import React, { useState } from "react";
 
-const TaskCard = ({
-  task,
-  onEdit,
-  onDelete,
-  onMoveToDoing,
-  onMoveToDone,
-  onDragStart,
-  onDragEnd,
-}) => {
+const TaskCard = ({ task, onEdit, onDelete, onDragStart, onDragEnd }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [editedTask, setEditedTask] = useState(task);
 

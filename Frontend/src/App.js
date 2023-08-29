@@ -2,10 +2,11 @@ import React, { useState, useEffect } from "react";
 import KanbanBoard from "./components/KanbanBoard";
 import AddTaskForm from "./components/AddTaskForm";
 import axios from "axios";
+import NavBar from "./components/NavBar";
 import "./App.css";
 
 const api = axios.create({
-  baseURL: "http://localhost:3001", // Adjust the baseURL to your API endpoint
+  baseURL: "http://localhost:3001",
 });
 
 const App = () => {
@@ -56,14 +57,16 @@ const App = () => {
   };
 
   return (
-    <div className="container mx-auto mt-8">
-      <h1 className="app-title">Kanban Board Task Management</h1>
-      <AddTaskForm onAdd={handleAddTask} />
-      <KanbanBoard
-        tasks={tasks}
-        onEdit={handleEditTask}
-        onDelete={handleDeleteTask}
-      />
+    <div>
+      <NavBar />
+      <div className="container mx-auto mt-8">
+        <AddTaskForm onAdd={handleAddTask} />
+        <KanbanBoard
+          tasks={tasks}
+          onEdit={handleEditTask}
+          onDelete={handleDeleteTask}
+        />
+      </div>
     </div>
   );
 };

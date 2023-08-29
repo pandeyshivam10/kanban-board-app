@@ -1,31 +1,39 @@
-/* Reset some default styles */
-body, h1, h2, h3, p, button {
-  margin: 0;
+* {
   padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 body {
   font-family: Arial, sans-serif;
-  background-color: #f2f2f2;
+  background-color: rgb(236, 232, 203);
 }
 
 .container {
-  
   margin: 0 auto;
-  padding: 20px;
+  padding: 30px;
 }
 
 .app-title {
-  font-size: 28px;
+  font-size: 36px;
   font-weight: bold;
-  margin-bottom: 20px;
+  color: #cd7700; 
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); 
+  position: relative;
+  display: inline-block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding-bottom: 15px;
+  text-decoration: underline;
 }
 
 .add-task-form {
-  background-color: #fff;
+  background-color: #c0bfae;
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgba(189, 131, 131, 0.1);
 }
 
 .add-task-form h2 {
@@ -64,11 +72,6 @@ body {
   background-color: #0056b3;
 }
 
-.kanban-board {
-  display: flex;
-  justify-content: space-between;
-}
-
 .task-column {
   flex: 1;
   background-color: #fff;
@@ -84,22 +87,33 @@ body {
 }
 
 .task-card {
-  background-color: #f9f9f9;
+  max-width: 400px;
+  min-height: 83px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   padding: 25px;
-  margin-bottom: 10px;
-  border-radius: 19px;
-  box-shadow: 0 2px 4px rgb(181 166 166 / 50%);
+  margin: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.45);
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.25);
 }
 
 .task-card h3 {
   font-size: 18px;
-  font-weight: bold;
+  font-weight: bolder;
+  text-transform: uppercase;
   margin-bottom: 6px;
+  color: rgb(0, 38, 207);
+  text-transform: uppercase;
 }
 
 .task-card p {
   font-size: 14px;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+  color: rgb(14, 3, 3);
+  text-transform: capitalize;
 }
 
 .task-card-buttons {
@@ -107,7 +121,8 @@ body {
   justify-content: space-between;
 }
 
-.edit-button, .delete-button {
+.edit-button,
+.delete-button {
   background-color: #007bff;
   color: #fff;
   border: none;
@@ -116,6 +131,43 @@ body {
   cursor: pointer;
 }
 
-.edit-button:hover, .delete-button:hover {
+.edit-button:hover,
+.delete-button:hover {
   background-color: #0056b3;
 }
+
+/* NavBar.css */
+.nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #db9436;
+  padding: 20px 20px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+}
+
+.nav-links li {
+  margin-left: 20px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: white;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #e1d2b0;
+}
+
