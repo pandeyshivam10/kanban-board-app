@@ -18,7 +18,7 @@ const App = () => {
 
   const fetchTasks = async () => {
     try {
-      const response = await api.get("/tasks");
+      const response = await api.get("/");
       setTasks(response.data);
     } catch (error) {
       console.error("Error fetching tasks:", error);
@@ -27,7 +27,7 @@ const App = () => {
 
   const handleAddTask = async (newTask) => {
     try {
-      const response = await api.post("/tasks", newTask);
+      const response = await api.post("/", newTask);
       setTasks([...tasks, response.data]);
     } catch (error) {
       console.error("Error adding task:", error);
@@ -36,7 +36,7 @@ const App = () => {
 
   const handleEditTask = async (editedTask) => {
     try {
-      const response = await api.put(`/tasks/${editedTask._id}`, editedTask);
+      const response = await api.put(`/${editedTask._id}`, editedTask);
       const updatedTasks = tasks.map((task) =>
         task._id === response.data._id ? response.data : task
       );
@@ -48,7 +48,7 @@ const App = () => {
 
   const handleDeleteTask = async (taskId) => {
     try {
-      await api.delete(`/tasks/${taskId}`);
+      await api.delete(`/${taskId}`);
       const updatedTasks = tasks.filter((task) => task._id !== taskId);
       setTasks(updatedTasks);
     } catch (error) {

@@ -33,7 +33,7 @@ const Task = mongoose.model("Task", {
   status: String,
 });
 
-app.get("/tasks", async (req, res) => {
+app.get("/", async (req, res) => {
   try {
     const tasks = await Task.find();
     res.json(tasks);
@@ -43,7 +43,7 @@ app.get("/tasks", async (req, res) => {
 });
 
 // Create a new task
-app.post("/tasks", async (req, res) => {
+app.post("/", async (req, res) => {
   const task = new Task({
     title: req.body.title,
     description: req.body.description,
@@ -58,7 +58,7 @@ app.post("/tasks", async (req, res) => {
   }
 });
 
-app.put("/tasks/:id", async (req, res) => {
+app.put("/:id", async (req, res) => {
   try {
     const task = await Task.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
@@ -69,7 +69,7 @@ app.put("/tasks/:id", async (req, res) => {
   }
 });
 
-app.delete("/tasks/:id", async (req, res) => {
+app.delete("/:id", async (req, res) => {
   try {
     await Task.findByIdAndDelete(req.params.id);
     res.json({ message: "Task deleted" });
