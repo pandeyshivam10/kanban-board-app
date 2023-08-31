@@ -6,8 +6,8 @@ import NavBar from "./components/NavBar";
 import "./App.css";
 
 const api = axios.create({
-  // baseURL: "http://localhost:3001",
-  baseURL: "/",
+  baseURL: "http://localhost:3001",
+  // baseURL: "/",
 });
 
 const App = () => {
