@@ -34,13 +34,13 @@ This project is built using the MERN (MongoDB, Express.js, React, Node.js) stack
 
 ## Screenshots
 
-![Kanban Board App Screenshot 1](images/2.png)
+![Kanban Board App Screenshot 1](image/2.png)
 
-![Kanban Board App Screenshot 2](images/3.png)
+![Kanban Board App Screenshot 2](image/3.png)
 
-![Kanban Board App Screenshot 3](images/4.png)
+![Kanban Board App Screenshot 3](image/4.png)
 
-![Kanban Board App Screenshot 4](images/5.png)
+![Kanban Board App Screenshot 4](image/5.png)
 
    ```
 Access the application in your web browser at `https://kanban-board-app-nrly.vercel.app/`.
